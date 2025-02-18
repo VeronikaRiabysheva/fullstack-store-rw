@@ -4,11 +4,11 @@ import { Link } from "react-router-dom";
 
 
 const Navbar = () => {
-    const user = true
-    const isAdmin = true
+    const user = false
+    const isAdmin = false
 
 	return (
-		<header className='fixed top-0 left-0 w-full bg-gray-950 bg-opacity-90 backdrop-blur-md shadow-lg z-40 transition-all 
+		<header className='fixed top-0 left-0 w-full bg-zinc-950 bg-opacity-90 backdrop-blur-md shadow-lg z-40 transition-all 
         duration-300 border-b border-sky-400'>
 			<div className='container mx-auto px-4 py-3'>
 				<div className='flex flex-wrap justify-between items-center'>

@@ -4,11 +4,12 @@ import HomePage from './pages/HomePage';
 import SignUpPage from './pages/SignUpPage';
 import LoginPage from './pages/LoginPage';
 import Navbar from './components/Navbar';
+import { Toaster } from 'react-hot-toast';
 
 
 function App() {
   return (
-    <div className='min-h-screen bg-sky-50 text-black relative overflow-hidden'>
+    <div className='min-h-screen bg-linear-to-r from-zinc-700 to-zinc-800 text-white relative overflow-hidden'>
       {/* Background gradient */}
 			{/* <div className='absolute inset-0 overflow-hidden'>
 				<div className='absolute inset-0'>
@@ -26,6 +27,7 @@ function App() {
     </Routes>
 
     </div>
+    <Toaster/>
     </div>
   )
 }

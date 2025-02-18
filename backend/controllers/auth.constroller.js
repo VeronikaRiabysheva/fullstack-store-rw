@@ -7,7 +7,7 @@ const generateTokens = (userID) => {
     expiresIn: "15m",
   });
 
-  const refreshToken = jwt.sign({ userID }, process.env.REFRESH_ACCESS_TOKEN, {
+  const refreshToken = jwt.sign({ userID }, process.env.REFRESH_TOKEN_SECRET, {
     expiresIn: "7d",
   });
 
@@ -66,7 +66,7 @@ export const signup = async (req, res) => {
   } catch (error) {
     console.log("Error is in signUp controller", error.message);
 
-    res.status(500).json({ message: error.message });
+    res.status(500).json({ message: error.message + "Ошибка здесь"});
   }
 };
 
