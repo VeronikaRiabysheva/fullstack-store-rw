@@ -1,10 +1,14 @@
 import jwt from "jsonwebtoken";
 import User from "../models/user.model.js";
+import dotenv from "dotenv"
 
-export const protectRoute = async (req, res) => {
+dotenv.config()
+
+export const protectRoute = async (req, res, next) => {
   try {
-    const accessToken = req.cookie.accessToken;
-
+    const accessToken = req.cookies.accessToken;
+  // console.log("req.cookies.accessToken", req.cookies.accessToken)
+  // console.log("Куки в запросе:", req.cookies);
     if (!accessToken) {
       return res.status(401).json({
         message: "Вы не авторизованы - токен для авторизации не предоставлен",
@@ -20,7 +24,6 @@ export const protectRoute = async (req, res) => {
       }
 
       req.user = user;
-
       next();
     } catch (error) {
       if (error.name === "TokenExpiredError") {

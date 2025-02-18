@@ -1,11 +1,15 @@
 import { redis } from "../lib/redis.js";
 import User from "../models/user.model.js";
 import jwt from "jsonwebtoken";
+import dotenv from "dotenv"
+
+dotenv.config()
 
 const generateTokens = (userID) => {
   const accessToken = jwt.sign({ userID }, process.env.ACCESS_TOKEN_SECRET, {
     expiresIn: "15m",
   });
+  // console.log("accessToken", accessToken)
 
   const refreshToken = jwt.sign({ userID }, process.env.REFRESH_TOKEN_SECRET, {
     expiresIn: "7d",
@@ -51,8 +55,10 @@ export const signup = async (req, res) => {
     }
     const user = await User.create({ name, email, password });
 
+    // console.log("Генерация токенов для пользователя с ID:", user._id);
     // authenticate user
     const { accessToken, refreshToken } = generateTokens(user._id);
+    // console.log("Сгенерированные токены:", { accessToken, refreshToken });
     await storeRefreshToken(user._id, refreshToken);
 
     setCookies(res, accessToken, refreshToken);
@@ -70,13 +76,22 @@ export const signup = async (req, res) => {
   }
 };
 
+
+
+
+
+///////////////----------------------
+
 export const login = async (req, res) => {
   try {
     const { email, password } = req.body;
+    // console.log("req body:", req.body)
     const user = await User.findOne({ email });
+    // console.log("User found:", user);
 
     if (user && (await user.comparePassword(password))) {
       const { accessToken, refreshToken } = generateTokens(user._id);
+
 
       await storeRefreshToken(user._id, refreshToken);
       setCookies(res, accessToken, refreshToken);
@@ -87,14 +102,24 @@ export const login = async (req, res) => {
         email: user.email,
         role: user.role,
       });
+
     } else {
-      res.status(401).json({ message: "Неверное имя или пароль" });
+      console.log("User found:", user);
+      console.log("Password comparison result:", await user.comparePassword(password));
+      res.status(401).json({ message: "Неверное имя или пароль Error" });
+
     }
   } catch (error) {
     console.log("Error is in login controller", error.message);
     res.status(500).json({ message: error.message });
+
+     
   }
 };
+
+////////////-------------------------
+
+
 
 export const logout = async (req, res) => {
   try {
@@ -102,11 +127,11 @@ export const logout = async (req, res) => {
     if (refreshToken) {
       const decoded = jwt.verify(
         refreshToken,
-        process.env.REFRESH_ACCESS_TOKEN
+        process.env.REFRESH_TOKEN_SECRET
       );
       await redis.del(`refresh_token: ${decoded.userTD}`);
     }
-    res.clearCookie("accesToken");
+    res.clearCookie("accessToken");
     res.clearCookie("refreshToken");
     res.json({ message: "Вы успешно вышли из личного кабинета " });
   } catch (error) {

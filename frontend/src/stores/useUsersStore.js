@@ -23,5 +23,39 @@ export const useUsersStore = create((set, get) => ({
             const errorMessage = error.response?.data?.message || "Возникла ошибка, пожалуйста, повторите попытку позже";
             toast.error(errorMessage);
         }
-    }
+    },
+
+    login: async ({ email, password}) => {
+        set({ loading: true });
+
+        try {
+            const res = await axios.post("/auth/login", { email, password });
+            set({ user: res.data, loading: false });
+        } catch (error) {
+            set({ loading: false });
+            const errorMessage = error.response?.data?.message || "Возникла ошибка, пожалуйста, повторите попытку позже";
+            toast.error(errorMessage);
+        }
+    },
+
+    logout: async () => {
+		try {
+			await axios.post("/auth/logout");
+			set({ user: null });
+		} catch (error) {
+			toast.error(error.response?.data?.message || "An error occurred during logout");
+		}
+	},
+    
+	checkAuth: async () => {
+		set({ checkingAuth: true });
+		try {
+			const response = await axios.get("/auth/profile");
+			set({ user: response.data, checkingAuth: false });
+		} catch (error) {
+			console.log(error.message);
+			set({ checkingAuth: false, user: null });
+		}
+	},
+
 }));
