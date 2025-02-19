@@ -26,8 +26,8 @@ export const useProductStore = create((set) => ({
 			const response = await axios.get("/products");
 			set({ products: response.data.products, loading: false });
 		} catch (error) {
-			set({ error: "Failed to fetch products", loading: false });
-			toast.error(error.response.data.error || "Failed to fetch products");
+			set({ error: "Не удалось загрузить товары", loading: false });
+			toast.error(error.response.data.error || "Не удалось загрузить товары");
 		}
 	},
 
@@ -41,7 +41,7 @@ export const useProductStore = create((set) => ({
 			}));
 		} catch (error) {
 			set({ loading: false });
-			toast.error(error.response.data.error || "Failed to delete product");
+			toast.error(error.response.data.error || "Не удалось удать товарt");
 		}
 	},
 	toggleFeaturedProduct: async (productId) => {
@@ -57,7 +57,7 @@ export const useProductStore = create((set) => ({
 			}));
 		} catch (error) {
 			set({ loading: false });
-			toast.error(error.response.data.error || "Failed to update product");
+			toast.error(error.response.data.error || "Не удалось добавить в избранное");
 		}
 	},
 	fetchProductsByCategory: async (category) => {

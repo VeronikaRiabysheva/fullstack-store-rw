@@ -3,18 +3,18 @@ import React from 'react'
 import toast from "react-hot-toast";
 // import { ShoppingCart } from "lucide-react";
 import { useUsersStore } from "../stores/useUsersStore";
-// import { useCartStore } from "../stores/useCartStore";
+import { useCartStore } from "../stores/useCartStore";
 
 const ProductCard = ({ product }) => {
 	const { user } = useUsersStore();
-	// const { addToCart } = useCartStore();
+	const { addToCart } = useCartStore();
 	const handleAddToCart = () => {
 		if (!user) {
 			toast.error("Войдите в аккаунт, чтобы добавить товар в корзину", { id: "login" });
 			return;
 		} else {
 			// add to cart
-			// addToCart(product);
+			addToCart(product);
 		}
 	};
 
