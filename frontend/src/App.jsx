@@ -8,6 +8,7 @@ import { Toaster } from 'react-hot-toast';
 import { useUsersStore } from './stores/useUsersStore';
 import LoadingSpinner from './components/LoadingSpinner';
 import AdminPage from './components/AdminPage';
+import CategoryPage from './pages/CategoryPage';
 
 
 function App() {
@@ -29,10 +30,12 @@ function App() {
 <div className='relative z-50 pt-20'>
 <Navbar/>
           <Routes>
-<Route path='/' element={<HomePage/>}/>
-<Route path='/signup' element={!user ? <SignUpPage /> : <Navigate to='/' />} />
+          <Route path='/' element={<HomePage/>}/>
+          <Route path='/signup' element={!user ? <SignUpPage /> : <Navigate to='/' />} />
 					<Route path='/login' element={!user ? <LoginPage /> : <Navigate to='/' />} />
           <Route path='/secret-dashboard' element={user?.role === "admin" ? <AdminPage /> : <Navigate to='/login' />} />
+          <Route path='/category/:category' element={ <CategoryPage />} />
+
 
     </Routes>
 

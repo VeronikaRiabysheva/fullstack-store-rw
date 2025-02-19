@@ -2,13 +2,13 @@ import React from 'react'
 import CategoryItem from '../components/CategoryItem';
 
 const categories = [
-	{ href: "/jeans", name: "Джинсы", imageUrl: "/jeans.jpg" },
-	{ href: "/t-shirts", name: "Футболки", imageUrl: "/tshirts.jpg" },
-	{ href: "/shoes", name: "Обувь", imageUrl: "/shoes.jpg" },
-	{ href: "/glasses", name: "Очки", imageUrl: "/glasses.jpg" },
-	{ href: "/jackets", name: "Куртки", imageUrl: "/jackets.jpg" },
-	{ href: "/suits", name: "Костюмы", imageUrl: "/suits.jpg" },
-	{ href: "/bags", name: "Сумки", imageUrl: "/bags.jpg" },
+	{ href: "/джинсы", name: "Джинсы", imageUrl: "/jeans.jpg" },
+	{ href: "/футболки", name: "Футболки", imageUrl: "/tshirts.jpg" },
+	{ href: "/обувь", name: "Обувь", imageUrl: "/shoes.jpg" },
+	{ href: "/очки", name: "Очки", imageUrl: "/glasses.jpg" },
+	{ href: "/куртки", name: "Куртки", imageUrl: "/jackets.jpg" },
+	{ href: "/костюмы", name: "Костюмы", imageUrl: "/suits.jpg" },
+	{ href: "/сумки", name: "Сумки", imageUrl: "/bags.jpg" },
 ];
 
 const HomePage = () => {

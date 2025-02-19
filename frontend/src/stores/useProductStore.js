@@ -60,5 +60,15 @@ export const useProductStore = create((set) => ({
 			toast.error(error.response.data.error || "Failed to update product");
 		}
 	},
+	fetchProductsByCategory: async (category) => {
+		set({ loading: true });
+		try {
+			const response = await axios.get(`/products/category/${category}`);
+			set({ products: response.data.products, loading: false });
+		} catch (error) {
+			set({ error: "Не удалось загрузить товар", loading: false });
+			toast.error(error.response.data.error || "Не удалось загрузить товар");
+		}
+	},
 
 }))

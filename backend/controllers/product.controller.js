@@ -114,17 +114,20 @@ export const getRecommendedProducts = async (req, res) => {
 };
 
 export const getProductsByCategory = async (req, res) => {
-  const { category } = req.params;
-  try {
-    const products = Product.find({ category });
-    res.json(category);
-  } catch (error) {
-    console.log("Error is in getProductsByCategory controller", error.message);
-    res.status(500).json({ message: "Ошибка сервера", error: error.message });
-  }
+	const { category } = req.params;
+
+	try {
+		const products = await Product.find({ category });
+		res.json({ products });
+	} catch (error) {
+		console.log("Error in getProductsByCategory controller", error.message);
+		res.status(500).json({ message: "Ошибка сервера", error: error.message });
+	}
 };
 
+
 export const toggleFeaturedProduct = async (req, res) => {
+
   //update db
   try {
     const product = await Product.findById(req.params.id);
