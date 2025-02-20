@@ -24,7 +24,7 @@ const HomePage = () => {
 				<h1 className='text-center text-5xl sm:text-6xl font-bold text-sky-400 mb-4'>
 					Категории товаров  
 				</h1>
-				<p className='text-center text-xl text-gray-300 mb-12'>
+				<p className='text-center text-xl text-zinc-300 mb-12'>
         Откройте для себя уникальные товары и лучшие предложения!
 				</p>
 

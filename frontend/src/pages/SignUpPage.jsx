@@ -40,15 +40,15 @@ const {signup, loading} = useUsersStore();
 				animate={{ opacity: 1, y: 0 }}
 				transition={{ duration: 0.8, delay: 0.2 }}
 			>
-				<div className='bg-gray-950 py-8 px-4 shadow sm:rounded-lg sm:px-10'>
+				<div className='bg-zinc-950 py-8 px-4 shadow sm:rounded-lg sm:px-10'>
 					<form onSubmit={handleSubmit} className='space-y-6'>
 						<div>
-							<label htmlFor='name' className='block text-sm font-medium text-gray-300'>
+							<label htmlFor='name' className='block text-sm font-medium text-zinc-300'>
 								Фамилия, Имя
 							</label>
 							<div className='mt-1 relative rounded-md shadow-sm'>
 								<div className='absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none'>
-									<User className='h-5 w-5 text-gray-400' aria-hidden='true' />
+									<User className='h-5 w-5 text-zinc-400' aria-hidden='true' />
 								</div>
 								<input
 									id='name'
@@ -56,20 +56,20 @@ const {signup, loading} = useUsersStore();
 									required
 									value={formData.name}
 									onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-									className='block w-full px-3 py-2 pl-10 bg-gray-700 border border-gray-600 rounded-md shadow-sm
-									 placeholder-gray-400 focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm'
+									className='block w-full px-3 py-2 pl-10 bg-zinc-700 border border-zinc-600 rounded-md shadow-sm
+									 placeholder-zinc-400 focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm'
 									placeholder='Иванов Иван'
 								/>
 							</div>
 						</div>
 
 						<div>
-							<label htmlFor='email' className='block text-sm font-medium text-gray-300'>
+							<label htmlFor='email' className='block text-sm font-medium text-zinc-300'>
 								Email
 							</label>
 							<div className='mt-1 relative rounded-md shadow-sm'>
 								<div className='absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none'>
-									<Mail className='h-5 w-5 text-gray-400' aria-hidden='true' />
+									<Mail className='h-5 w-5 text-zinc-400' aria-hidden='true' />
 								</div>
 								<input
 									id='email'
@@ -77,9 +77,9 @@ const {signup, loading} = useUsersStore();
 									required
 									value={formData.email}
 									onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-									className=' block w-full px-3 py-2 pl-10 bg-gray-700 border border-gray-600 
+									className=' block w-full px-3 py-2 pl-10 bg-zinc-700 border border-zinc-600 
 									rounded-md shadow-sm
-									 placeholder-gray-400 focus:outline-none focus:ring-sky-500 
+									 placeholder-zinc-400 focus:outline-none focus:ring-sky-500 
 									 focus:border-sky-500 sm:text-sm'
 									placeholder='ivanivanov@example.com'
 								/>
@@ -87,12 +87,12 @@ const {signup, loading} = useUsersStore();
 						</div>
 
 						<div>
-							<label htmlFor='password' className='block text-sm font-medium text-gray-300'>
+							<label htmlFor='password' className='block text-sm font-medium text-zinc-300'>
 								Пароль
 							</label>
 							<div className='mt-1 relative rounded-md shadow-sm'>
 								<div className='absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none'>
-									<Lock className='h-5 w-5 text-gray-400' aria-hidden='true' />
+									<Lock className='h-5 w-5 text-zinc-400' aria-hidden='true' />
 								</div>
 								<input
 									id='password'
@@ -100,20 +100,20 @@ const {signup, loading} = useUsersStore();
 									required
 									value={formData.password}
 									onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-									className=' block w-full px-3 py-2 pl-10 bg-gray-700 border border-gray-600 
-									rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm'
+									className=' block w-full px-3 py-2 pl-10 bg-zinc-700 border border-zinc-600 
+									rounded-md shadow-sm placeholder-zinc-400 focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm'
 									placeholder='••••••••'
 								/>
 							</div>
 						</div>
 
 						<div>
-							<label htmlFor='confirmPassword' className='block text-sm font-medium text-gray-300'>
+							<label htmlFor='confirmPassword' className='block text-sm font-medium text-zinc-300'>
 								Подтвердите пароль
 							</label>
 							<div className='mt-1 relative rounded-md shadow-sm'>
 								<div className='absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none'>
-									<Lock className='h-5 w-5 text-gray-400' aria-hidden='true' />
+									<Lock className='h-5 w-5 text-zinc-400' aria-hidden='true' />
 								</div>
 								<input
 									id='confirmPassword'
@@ -121,8 +121,8 @@ const {signup, loading} = useUsersStore();
 									required
 									value={formData.confirmPassword}
 									onChange={(e) => setFormData({ ...formData, confirmPassword: e.target.value })}
-									className=' block w-full px-3 py-2 pl-10 bg-gray-700 border
-									 border-gray-600 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm'
+									className=' block w-full px-3 py-2 pl-10 bg-zinc-700 border
+									 border-zinc-600 rounded-md shadow-sm placeholder-zinc-400 focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm'
 									placeholder='••••••••'
 								/>
 							</div>
@@ -150,7 +150,7 @@ const {signup, loading} = useUsersStore();
 						</button>
 					</form>
 
-					<p className='mt-8 text-center text-sm text-gray-400'>
+					<p className='mt-8 text-center text-sm text-zinc-400'>
 						Уже есть аккаунт?{" "}
 						<Link to='/login' className='font-medium text-sky-400 hover:text-sky-300'>
 							Войти <ArrowRight className='inline h-4 w-4' />

@@ -21,7 +21,7 @@ const {cart} = useCartStore()
 					<nav className='flex flex-wrap items-center gap-4'>
 						<Link
 							to={"/"}
-							className='text-gray-300 hover:text-sky-400 transition duration-300
+							className='text-zinc-300 hover:text-sky-400 transition duration-300
 					 ease-in-out'
 						>
 							Главная
@@ -29,18 +29,18 @@ const {cart} = useCartStore()
 						{user && (
 							<Link
 								to={"/cart"}
-								className='relative group text-gray-300 hover:text-sky-400 transition duration-300 
+								className='relative group text-zinc-300 hover:text-sky-400 transition duration-300 
 							ease-in-out'
 							>
 								<ShoppingCart className='inline-block mr-1 group-hover:text-sky-400' size={20} />
 								<span className='hidden sm:inline'>Корзина</span>
 								
-									<span
+									{cart.length > 0 && <span
 										className='absolute -top-2 -left-2 bg-sky-500 text-white rounded-full px-2 py-0.5 
 									text-xs group-hover:bg-sky-400 transition duration-300 ease-in-out'
 									>
 										{cart.length}
-									</span>
+									</span>}
 							
 							</Link>
 						)}
@@ -57,7 +57,7 @@ const {cart} = useCartStore()
 
 						{user ? (
 							<button
-								className='bg-gray-700 hover:bg-gray-600 text-white py-2 px-4 
+								className='bg-zinc-700 hover:bg-zinc-600 text-white py-2 px-4 
 						rounded-md flex items-center transition duration-300 ease-in-out'
 						onClick={logout}
 							>
@@ -77,7 +77,7 @@ const {cart} = useCartStore()
 								</Link>
 								<Link
 									to={"/login"}
-									className='bg-gray-700 hover:bg-gray-600 text-white py-2 px-4 
+									className='bg-zinc-700 hover:bg-zinc-600 text-white py-2 px-4 
 									rounded-md flex items-center transition duration-300 ease-in-out'
 								>
 									<LogIn className='mr-2' size={18} />
