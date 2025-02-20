@@ -83,40 +83,28 @@ export const signup = async (req, res) => {
 ///////////////----------------------
 
 export const login = async (req, res) => {
-  try {
-    const { email, password } = req.body;
-    console.log("req body:", req.body);    
-    const user = await User.findOne({ email });
-    console.log("User found:", user);
+	try {
+		const { email, password } = req.body;
+		const user = await User.findOne({ email });
 
-    // Проверяем, найден ли пользователь
-    if (!user) {
-      console.log("Пользователь не найден");
-      return res.status(401).json({ message: "Неверное имя или пароль" });
-    }
+		if (user && (await user.comparePassword(password))) {
+			const { accessToken, refreshToken } = generateTokens(user._id);
+			await storeRefreshToken(user._id, refreshToken);
+			setCookies(res, accessToken, refreshToken);
 
-    // Проверяем правильность пароля
-    const isPasswordValid = await user.comparePassword(password);
-    if (!isPasswordValid) {
-      console.log("Неверный пароль");
-      return res.status(401).json({ message: "Неверное имя или пароль" });
-    }
-
-    const { accessToken, refreshToken } = generateTokens(user._id);
-    await storeRefreshToken(user._id, refreshToken);
-    setCookies(res, accessToken, refreshToken);
-
-    res.json({
-      id: user.id,
-      name: user.name,
-      email: user.email,
-      role: user.role,
-    });
-
-  } catch (error) {
-    console.log("Error is in login controller", error.message);
-    res.status(500).json({ message: error.message });
-  }
+			res.json({
+				_id: user._id,
+				name: user.name,
+				email: user.email,
+				role: user.role,
+			});
+		} else {
+			res.status(400).json({ message: "Неверное имя или пароль" });
+		}
+	} catch (error) {
+		console.log("Error in login controller", error.message);
+		res.status(500).json({ message: error.message });
+	}
 };
 
 ////////////-------------------------

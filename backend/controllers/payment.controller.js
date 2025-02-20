@@ -3,6 +3,7 @@ import Order from "../models/order.model.js";
 import { stripe } from "../lib/stripe.js";
 
 export const createCheckoutSession = async (req, res) => {
+  console.log("createCheckoutSession")
   try {
     const { products, couponCode } = req.body;
 
@@ -18,7 +19,7 @@ export const createCheckoutSession = async (req, res) => {
 
       return {
         price_data: {
-          currency: "usd",
+          currency: "rub",
           product_data: {
             name: product.name,
             images: [product.image],
@@ -82,6 +83,7 @@ export const createCheckoutSession = async (req, res) => {
 };
 
 export const checkoutSuccess = async (req, res) => {
+  console.log("checkoutSuccess")
   try {
     const { sessionId } = req.body;
     const session = await stripe.checkout.sessions.retrieve(sessionId);
@@ -142,6 +144,7 @@ async function createStripeCoupon(discountPercentage) {
 }
 
 async function createNewCoupon(userId) {
+
   await Coupon.findOneAndDelete({ userId });
 
   const newCoupon = new Coupon({

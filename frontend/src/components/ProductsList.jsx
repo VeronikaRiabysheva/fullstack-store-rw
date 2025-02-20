@@ -17,8 +17,8 @@ return (
 			animate={{ opacity: 1, y: 0 }}
 			transition={{ duration: 0.8 }}
 		>
-			<table className=' min-w-full divide-y divide-zinc-700'>
-				<thead className='bg-zinc-700'>
+			<table className=' min-w-full divide-y divide-sky-800'>
+				<thead className='bg-zinc-800'>
 					<tr>
 						<th
 							scope='col'

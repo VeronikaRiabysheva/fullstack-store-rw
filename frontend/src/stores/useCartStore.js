@@ -86,12 +86,16 @@ applyCoupon: async (code) => {
         get().calculateTotals();
         toast.success("Промокод успешно применен!");
     } catch (error) {
-        toast.error(error.response?.data?.message || "Ошибка при использовании промокод");
+        toast.error(error.response?.data?.message || "Произошла ошибка");
     }
 },
 removeCoupon: () => {
     set({ coupon: null, isCouponApplied: false });
     get().calculateTotals();
     toast.success("Промокод удален");
+},
+
+clearCart: async () => {
+    set({ cart: [], coupon: null, total: 0, subtotal: 0 });
 },
 }));

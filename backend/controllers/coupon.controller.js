@@ -20,17 +20,17 @@ export const validateCoupon = async (req, res) => {
     });
 
     if (!coupon) {
-      return res.status(404).json({ message: "Купон не найден" });
+      return res.status(404).json({ message: "Промокод не найден" });
     }
 
     if (coupon.expirationDate < new Date()) {
       coupon.isActive = false;
       await coupon.save();
-      return res.status(404).json({ mesage: "Срок действия купона истек" });
+      return res.status(404).json({ mesage: "Срок действия промокода истек" });
     }
 
     res.json({
-      message: "Купон действителен",
+      message: "Промокод действителен",
       code: coupon.code,
       discountPercentage: coupon.discountPercentage,
     });
