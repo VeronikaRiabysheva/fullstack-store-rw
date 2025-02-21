@@ -39,7 +39,6 @@ const handleSubmit = async (e) => {
 		}
 	};
 
-
     return (
     <div>
         <motion.div className='bg-zinc-800 shadow-lg rounded-lg p-8 mb-8 max-w-xl mx-auto'

@@ -8,7 +8,7 @@ export const createCheckoutSession = async (req, res) => {
     const { products, couponCode } = req.body;
 
     if (!Array.isArray(products) || products.length === 0) {
-      return res.status(400).json({ error: "Invalid or empty products array" });
+      return res.status(400).json({ error: "Недопустимый или пустой массив товаров" });
     }
 
     let totalAmount = 0;
@@ -75,15 +75,14 @@ export const createCheckoutSession = async (req, res) => {
     }
     res.status(200).json({ id: session.id, totalAmount: totalAmount / 100 });
   } catch (error) {
-    console.error("Error processing checkout:", error);
+    console.error("Проверка обработки ошибок:", error);
     res
       .status(500)
-      .json({ message: "Error processing checkout", error: error.message });
+      .json({ message: "Проверка обработки ошибок", error: error.message });
   }
 };
 
 export const checkoutSuccess = async (req, res) => {
-  console.log("checkoutSuccess")
   try {
     const { sessionId } = req.body;
     const session = await stripe.checkout.sessions.retrieve(sessionId);
@@ -119,16 +118,16 @@ export const checkoutSuccess = async (req, res) => {
       res.status(200).json({
         success: true,
         message:
-          "Payment successful, order created, and coupon deactivated if used.",
+          "Оплата прошла успешно, заказ создан, а купон деактивирован, если он был использован.",
         orderId: newOrder._id,
       });
     }
   } catch (error) {
-    console.error("Error processing successful checkout:", error);
+    console.error("Обработка ошибок при успешном оформлении заказа:", error);
     res
       .status(500)
       .json({
-        message: "Error processing successful checkout",
+        message: "Обработка ошибок при успешном оформлении заказаt",
         error: error.message,
       });
   }

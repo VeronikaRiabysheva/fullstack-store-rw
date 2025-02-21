@@ -18,6 +18,7 @@ import PurchaseCancelPage from './pages/PurchaseCancelPage';
 function App() {
   const {user, checkAuth, checkingAuth} = useUsersStore()
 const {getCartItems} = useCartStore()
+
   useEffect(() => {
 		checkAuth();
 	}, [checkAuth]);
@@ -27,6 +28,7 @@ const {getCartItems} = useCartStore()
     getCartItems()
   }, [getCartItems, user])
   if (checkingAuth) return <LoadingSpinner/>
+
   return (
     <div className='min-h-screen bg-linear-to-r from-zinc-700 to-zinc-800 text-white relative overflow-hidden'>
 <div className='relative z-50 pt-20'>
@@ -40,10 +42,7 @@ const {getCartItems} = useCartStore()
           <Route path='/cart' element={user ? <CartPage /> : <Navigate to= '/login'/>} />
           <Route path='/purchase-success' element={user ? <PurchaseSuccessPage /> : <Navigate to= '/login'/>} />
           <Route path='/purchase-cancel' element={user ? <PurchaseCancelPage /> : <Navigate to= '/login'/>} />
-
-
     </Routes>
-
     </div>
     <Toaster/>
     </div>

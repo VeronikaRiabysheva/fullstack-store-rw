@@ -13,7 +13,7 @@ function CategoryPage() {
 		fetchProductsByCategory(category);
 	}, [fetchProductsByCategory, category]);
 
-	console.log("products:", products);
+	// console.log("products:", products);
 
 
     return (

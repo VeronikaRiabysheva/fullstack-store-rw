@@ -1,6 +1,5 @@
 import React from 'react'
 import { useCartStore } from '../stores/useCartStore'
-
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ShoppingCart } from "lucide-react";

@@ -1,7 +1,7 @@
 import React from 'react'
 
 import toast from "react-hot-toast";
-// import { ShoppingCart } from "lucide-react";
+import { ShoppingCart } from "lucide-react";
 import { useUsersStore } from "../stores/useUsersStore";
 import { useCartStore } from "../stores/useCartStore";
 
@@ -37,7 +37,7 @@ const ProductCard = ({ product }) => {
 					 text-white hover:bg-sky-700 focus:outline-none focus:ring-4 focus:ring-sky-300'
 					onClick={handleAddToCart}
 				>
-					{/* <ShoppingCart size={22} className='mr-2' /> */}
+					<ShoppingCart size={22} className='mr-2' />
 					Добавить в корзину
 				</button>
 			</div>

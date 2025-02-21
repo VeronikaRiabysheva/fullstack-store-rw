@@ -35,7 +35,7 @@ const FeaturedProducts = ({ featuredProducts }) => {
 	return (
 		<div className='py-12'>
 			<div className='container mx-auto px-4'>
-				<h2 className='text-center text-5xl sm:text-6xl font-bold text-sky-400 mb-4'>Избранное</h2>
+				<h2 className='text-center text-5xl sm:text-6xl font-bold text-sky-400 mb-4'>Популярное</h2>
 				<div className='relative'>
 					<div className='overflow-hidden'>
 						<div
@@ -44,7 +44,7 @@ const FeaturedProducts = ({ featuredProducts }) => {
 						>
 							{featuredProducts?.map((product) => (
 								<div key={product._id} className='w-full sm:w-1/2 lg:w-1/3 xl:w-1/4 flex-shrink-0 px-2'>
-									<div className='bg-white bg-opacity-10 backdrop-blur-sm rounded-lg shadow-lg overflow-hidden h-full transition-all 
+									<div className='bg-zinc-200 bg-opacity-10 backdrop-blur-sm rounded-lg shadow-lg overflow-hidden h-full transition-all 
                                     duration-300 hover:shadow-xl border border-sky-500/30'>
 										<div className='overflow-hidden'>
 											<img
@@ -54,9 +54,9 @@ const FeaturedProducts = ({ featuredProducts }) => {
 											/>
 										</div>
 										<div className='p-4'>
-											<h3 className='text-lg font-semibold mb-2 text-white'>{product.name}</h3>
-											<p className='text-sky-300 font-medium mb-4'>
-												{product.price.toFixed(2)}
+											<h3 className='text-lg font-semibold mb-2 text-zinc-900'>{product.name}</h3>
+											<p className='text-sky-500 font-medium mb-4'>
+												{product.price} руб
 											</p>
 											<button
 												onClick={() => addToCart(product)}

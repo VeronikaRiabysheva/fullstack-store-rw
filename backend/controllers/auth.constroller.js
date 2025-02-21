@@ -77,11 +77,6 @@ export const signup = async (req, res) => {
 };
 
 
-
-
-
-///////////////----------------------
-
 export const login = async (req, res) => {
 	try {
 		const { email, password } = req.body;
@@ -106,9 +101,6 @@ export const login = async (req, res) => {
 		res.status(500).json({ message: error.message });
 	}
 };
-
-////////////-------------------------
-
 
 
 export const logout = async (req, res) => {

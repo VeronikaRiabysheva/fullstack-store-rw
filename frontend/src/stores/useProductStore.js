@@ -57,7 +57,7 @@ export const useProductStore = create((set) => ({
 			}));
 		} catch (error) {
 			set({ loading: false });
-			toast.error(error.response.data.error || "Не удалось добавить в избранное");
+			toast.error(error.response.data.error || "Не удалось добавить в популярное");
 		}
 	},
 	fetchProductsByCategory: async (category) => {

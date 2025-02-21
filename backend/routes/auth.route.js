@@ -22,7 +22,4 @@ router.get("/profile", protectRoute, getProfile);
 
 export default router;
 
-//ER2IAd8UFZCeRY0t
-//Your current IP address (144.202.13.106)
 
-//144.202.13.106/32

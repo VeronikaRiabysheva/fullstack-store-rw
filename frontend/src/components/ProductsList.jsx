@@ -8,7 +8,7 @@ function ProductsList() {
 
   const { deleteProduct, toggleFeaturedProduct, products } = useProductStore();
 
-	console.log("products", products);
+	// console.log("products", products);
 
 return (
 		<motion.div
@@ -43,7 +43,7 @@ return (
 							scope='col'
 							className='px-6 py-3 text-left text-xs font-medium text-zinc-300 uppercase tracking-wider'
 						>
-							Избранное
+							Популярное
 						</th>
 						<th
 							scope='col'
