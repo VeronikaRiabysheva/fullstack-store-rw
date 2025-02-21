@@ -69,7 +69,7 @@ const {cart} = useCartStore()
 							<>
 								<Link
 									to={"/signup"}
-									className='bg-sky-600 hover:bg-sky-700 text-white py-2 px-4 
+									className='bg-sky-600 hover:bg-sky-700 text-white py-2 px-2 
 									rounded-md flex items-center transition duration-300 ease-in-out'
 								>
 									<UserPlus className='mr-2' size={18} />
@@ -77,7 +77,7 @@ const {cart} = useCartStore()
 								</Link>
 								<Link
 									to={"/login"}
-									className='bg-zinc-700 hover:bg-zinc-600 text-white py-2 px-4 
+									className='bg-zinc-700 hover:bg-zinc-600 text-white py-2 px-2 
 									rounded-md flex items-center transition duration-300 ease-in-out'
 								>
 									<LogIn className='mr-2' size={18} />
